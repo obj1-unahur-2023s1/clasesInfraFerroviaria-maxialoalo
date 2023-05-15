@@ -51,15 +51,12 @@ class Formacion {
 	}
 	
 	method cantidadDeVagonesDePasajeros(){return
-		vagones.count({v=>v.capacidadPasajeros() > 0})
+		vagones.count({v=>v.tienePasajeros()})
 	}				
 	
-	method cantPasajerosPorVagon() = vagones.map({v=>v.capacidadPasajeros()})
-	
 	method estaOrganizada() {return
-		(self.cantidadDeVagonesDePasajeros() == 0) ||
-		(0..self.cantidadDeVagonesDePasajeros() - 1).all
-		({i=>self.cantPasajerosPorVagon().get(i) > 0})
+		self.vagones().take(self.cantidadDeVagonesDePasajeros()).all
+		({vagon=>vagon.tienePasajeros()})//hacer metodo tiene pasajeros
 	}	
 	
 	method velocidadMaxima()=locomotoras.min({l=>l.velocidadMaxima()})
