@@ -1,0 +1,21 @@
+import vagones.*
+
+describe "verificamos vagon de pasajeros" {
+	const vp1 = new VagonDePasajeros(largo=10,ancho=2,estaOrdenado=true)
+	const vp2 = new VagonDePasajeros(largo=10,ancho=2,estaOrdenado=false)
+	const vp3 = new VagonDePasajeros(largo=10,ancho=4,estaOrdenado=true)	
+	const vp4 = new VagonDePasajeros(largo=10,ancho=4,estaOrdenado=false)
+	
+	test "vagon 1 10x2 ordenado lleva 80" {
+		assert.equals(80,vp1.capacidadPasajeros())
+	}
+	test "vagon 2 10x2 no ordenado lleva 65" {
+		assert.equals(65,vp2.capacidadPasajeros())
+	}
+	test "vagon 3 10x4 ordenado lleva 100" {
+		assert.equals(100,vp3.capacidadPasajeros())
+	}
+	test "vagon 4 10x4 no no ordenado lleva 85" {
+		assert.equals(85,vp4.capacidadPasajeros())
+	}
+}
