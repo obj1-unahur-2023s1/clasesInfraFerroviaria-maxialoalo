@@ -8,6 +8,8 @@ class VagonDePasajeros {
 		if(ancho<=3) 8*largo else 10*largo
 	}
 	
+	method tienePasajeros()=true
+	
 	method capacidadPasajeros() {return
 		if(estaOrdenado) self.capacidadParcial() 
 		else 0.max(self.capacidadParcial() - 15)
@@ -30,6 +32,8 @@ class VagonDeCarga {
 	const property cargaMaximaIdeal
 	var property maderasSueltas
 	
+	
+	method tienePasajeros()=false
 	method cantMaximaDeCarga() {return
 		cargaMaximaIdeal - 400*maderasSueltas
 	}
@@ -50,6 +54,7 @@ class VagonDormitorio {
 	const property compartimentos
 	var property camaPorCompart
 	
+	method tienePasajeros()=self.capacidadPasajeros()>0
 	method cantMaximaDeCarga() = 1200
 	method capacidadPasajeros() = compartimentos * camaPorCompart
 	method tieneBanio() = true
